@@ -1452,9 +1452,15 @@ M   33  21.99
         assert_equal(test, ctrl)
 
 
-    def test_when_comments_none(self):
-        "When comments is None the String 'None' should not be read as a comment character. Issue #329"
-        test = np.genfromtxt(["test1,testNonetherestofthedata"], dtype=None, comments=None, delimiter=',')
+
+    def test_comments_none(self):
+        """                                                                                                                                                                                                                                                   
+        When comments is None the String 'None' should not be                                                                                                                                                                                                 
+        read as a comment character. Issue #329                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                              
+        """
+        data= "test1, testNonetherestofthedata"
+        test = np.genfromtxt(StringIO(data),  comments=None, delimiter=',', dtype=None)
         assert_equal(test[1], 'testNonetherestofthedata')
 
     def test_recfromtxt(self):
